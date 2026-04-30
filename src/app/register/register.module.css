@@ -1,5 +1,5 @@
 .container {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100vh - 4.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,56 +10,62 @@
 .formCard {
   width: 100%;
   max-width: 600px;
-  background: white;
-  padding: 3rem;
+  background: var(--background);
+  padding: 4rem;
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
 }
 
 .progress {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .step {
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   border-radius: 50%;
   background: var(--secondary);
   color: var(--secondary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 0.875rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
 }
 
 .step.active {
-  background: var(--primary);
-  color: white;
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
 }
 
 .line {
-  width: 3rem;
-  height: 2px;
-  background: var(--secondary);
-  margin: 0 0.5rem;
+  width: 4rem;
+  height: 1px;
+  background: var(--border);
+  margin: 0;
 }
 
 .formGroup {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .formGroup label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
 }
 
 .stepContent {
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
