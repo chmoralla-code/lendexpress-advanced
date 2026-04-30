@@ -1,13 +1,14 @@
 .hero {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: 8rem 0;
+  background: var(--background);
   min-height: calc(100vh - 4rem);
+  border-bottom: 1px solid var(--border);
 }
 
 .heroGrid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
   align-items: center;
 }
 
@@ -16,68 +17,82 @@
 }
 
 .title {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
+  margin-bottom: 2rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .highlight {
-  color: var(--primary);
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .description {
   font-size: 1.25rem;
   color: var(--muted);
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  max-width: 500px;
 }
 
 .cta {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
+  gap: 1rem;
+  margin-bottom: 5rem;
 }
 
 .stats {
   display: flex;
-  gap: 3rem;
+  gap: 4rem;
   padding: 0;
   background: transparent;
   box-shadow: none;
 }
 
 .statItem h3 {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
 }
 
 .statItem p {
   color: var(--muted);
+  font-size: 0.875rem;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .features {
-  padding: 6rem 0;
-  background: white;
+  padding: 8rem 0;
+  background: var(--accent);
 }
 
 .sectionTitle {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 4rem;
+  font-weight: 700;
+  margin-bottom: 5rem;
+  letter-spacing: -0.01em;
 }
 
 .featureGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .featureGrid h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .featureGrid p {
   color: var(--muted);
+  font-size: 0.9375rem;
 }
