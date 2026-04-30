@@ -3,9 +3,12 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './register.module.css';
+import { supabase } from '@/lib/supabase';
 
 export default function RegisterPage() {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,12 +24,38 @@ export default function RegisterPage() {
   const handleNext = () => setStep(step + 1);
   const handleBack = () => setStep(step - 1);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate registration and application
-    localStorage.setItem('userRole', 'user');
-    localStorage.setItem('isLoggedIn', 'true');
-    router.push('/dashboard');
+    setLoading(true);
+    setError(null);
+
+    try {
+      // 1. Submit the loan application to Supabase
+      // Note: In a real app, you would handle Auth first, but this demonstrates the data flow
+      const { data, error: sbError } = await supabase
+        .from('loans')
+        .insert([
+          {
+            amount: parseFloat(formData.amount),
+            term_months: 24, // default for demo
+            interest_rate: 8.5, // default for demo
+            monthly_payment: (parseFloat(formData.amount) * (8.5 / 100 / 12)) / (1 - Math.pow(1 + 8.5 / 100 / 12, -24)),
+            status: 'pending'
+          }
+        ]);
+
+      if (sbError) throw sbError;
+
+      // 2. Simulate login state
+      localStorage.setItem('userRole', 'user');
+      localStorage.setItem('isLoggedIn', 'true');
+      router.push('/dashboard');
+    } catch (err: any) {
+      console.error('Error submitting application:', err);
+      setError(err.message || 'An error occurred during submission.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -45,6 +74,8 @@ export default function RegisterPage() {
           {step === 2 && 'Personal Information'}
           {step === 3 && 'Financial Information'}
         </h2>
+
+        {error && <div className={styles.error}>{error}</div>}
 
         <form onSubmit={handleSubmit}>
           {step === 1 && (
@@ -149,7 +180,9 @@ export default function RegisterPage() {
               </div>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <button type="button" onClick={handleBack} className="btn btn-secondary" style={{ flex: 1 }}>Back</button>
-                <button type="submit" className="btn btn-primary" style={{ flex: 2 }}>Submit Application</button>
+                <button type="submit" className="btn btn-primary" style={{ flex: 2 }} disabled={loading}>
+                  {loading ? 'Submitting...' : 'Submit Application'}
+                </button>
               </div>
             </div>
           )}
