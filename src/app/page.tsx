@@ -1,39 +1,39 @@
 import Link from 'next/link';
 import styles from './page.module.css';
+import LoanCalculator from '@/components/ui/LoanCalculator';
 
 export default function Home() {
   return (
     <div className={styles.hero}>
       <div className="container">
-        <div className={styles.heroContent}>
-          <h1 className={styles.title}>
-            Financial Freedom, <span className={styles.highlight}>Simplified.</span>
-          </h1>
-          <p className={styles.description}>
-            Get personal loans up to $50,000 with instant approval and funds in your account within 24 hours. No hidden fees, no paperwork.
-          </p>
-          <div className={styles.cta}>
-            <Link href="/register" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
-              Check My Rate
-            </Link>
-            <Link href="/products" className="btn btn-secondary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
-              View Products
-            </Link>
+        <div className={styles.heroGrid}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.title}>
+              Financial Freedom, <span className={styles.highlight}>Simplified.</span>
+            </h1>
+            <p className={styles.description}>
+              Get personal loans up to $50,000 with instant approval and funds in your account within 24 hours. No hidden fees, no paperwork.
+            </p>
+            <div className={styles.cta}>
+              <Link href="/register" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
+                Check My Rate
+              </Link>
+            </div>
+            
+            <div className={styles.stats}>
+              <div className={styles.statItem}>
+                <h3>$1B+</h3>
+                <p>Loans Funded</p>
+              </div>
+              <div className={styles.statItem}>
+                <h3>500k+</h3>
+                <p>Customers</p>
+              </div>
+            </div>
           </div>
           
-          <div className={styles.stats}>
-            <div className={styles.statItem}>
-              <h3>$1B+</h3>
-              <p>Loans Funded</p>
-            </div>
-            <div className={styles.statItem}>
-              <h3>500k+</h3>
-              <p>Happy Customers</p>
-            </div>
-            <div className={styles.statItem}>
-              <h3>4.8/5</h3>
-              <p>User Rating</p>
-            </div>
+          <div className={styles.calculatorWrapper}>
+            <LoanCalculator />
           </div>
         </div>
       </div>

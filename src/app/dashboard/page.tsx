@@ -102,7 +102,7 @@ export default function UserDashboard() {
           
           <div className="card">
             <h3 style={{ marginBottom: '1rem' }}>Support</h3>
-            <p style={{ fontSize: '0.875rem', color: var(--muted), marginBottom: '1rem' }}>Have questions about your loan? Our team is here to help.</p>
+            <p style={{ fontSize: '0.875rem', color: 'var(--muted)', marginBottom: '1rem' }}>Have questions about your loan? Our team is here to help.</p>
             <button className="btn btn-secondary" style={{ width: '100%' }}>Contact Support</button>
           </div>
         </aside>
